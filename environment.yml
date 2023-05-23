@@ -1,0 +1,61 @@
+name: vwidget
+channels:
+  - fastai
+  - conda-forge # conda-forge packages are generaly smaller and better suited for Docker
+  - defaults
+
+dependencies:
+# ---- base env (equivalent to base initial instalation)
+  - python=3.10 
+  - pip
+  - libedit
+
+# ---- core Dev (python, tests & typing/lint)
+  # - poetry  # only use to install project locally
+  - yapf
+  - pytest
+  # - pytest-asyncio
+  - wget
+
+# ---- core Dev env
+  - numpy   # blas=*=*accelerate*
+  - pandas
+  - matplotlib
+  - loguru
+  - colorama
+  - tabulate
+  - rich
+  - fastcore
+  - notebook
+  - jupyterlab
+  - ipywidgets
+  - jupyter-packaging
+  - pre-commit
+
+  # ---- vwidget
+  - anywidget
+
+  - pip:
+    - --index-url https://pypi.doubanio.com/simple
+    - --extra-index-url https://pypi.python.org/simple
+    - ipyreact
+    - reorder-python-imports
+    - watchfiles
+    - -e ../vutil
+    - -e ../../source/fastai/nbdev/
+
+# ---- create env
+# mamba env create -f environment.yml
+# conda activate cv
+
+# ---- Install vutil & opencv after creation
+# pushd ~/dev/repo_sync/github/vutil
+# pip install -e .
+# popd
+# pip install "uvicorn[standard]" 
+
+# ---- and uninstall before removing
+# conda activate cv
+# pip uninstall vutil
+# conda deactivate
+# mamba remove -n cv --all

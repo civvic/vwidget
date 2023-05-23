@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "vwidget"
+  site-url: "https://civvic.github.io/vwidget"
+  description: "Jupyter widgets by composing ipywidgets and anywidget"
+  repo-branch: main
+  repo-url: "https://github.com/civvic/vwidget"
